@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  dyad:
+    build: .
+    ports:
+      - "6080:6080"
+      - "5900:5900"
+    environment:
+      - DISPLAY=:99
+      - ELECTRON_DISABLE_SANDBOX=1
+    volumes:
+      - dyad_data:/app/userData
+    restart: unless-stopped
+    container_name: dyad-app
+
+volumes:
+  dyad_data: 
